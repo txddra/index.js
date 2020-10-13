@@ -36,8 +36,9 @@ const server = http.createServer((request, response) => {
     }else if(request.url === '/about'){
 if(err){throw err}
 response.writeHead(200,{
-    'const'
-})
+    'content-type':'text/html'
+});
+readStream2.pipe(res);
     }
     //writes a header, takes in a status code
     //header
