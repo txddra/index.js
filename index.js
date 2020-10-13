@@ -21,7 +21,7 @@ const server = http.createServer((request, response) => {
                 email: 'flo@me.com',
             },
             {
-                name: 'Josh',
+                name: 'Josh', 
                 email: 'josh@me.com',
             },
         ];
@@ -33,13 +33,19 @@ const server = http.createServer((request, response) => {
         const readStream = fs.createReadStream(__dirname + '/lorem.txt', 'utf8')
 
         readStream.pipe(response)
-    }else if(request.url === '/about'){
-// if(err){throw err}
-response.writeHead(200,{
-    'content-type':'text/html'
-});
-const readStream2 = fs.createReadStream(__dirname + '/about.html')
-readStream2.pipe(res);
+    } else if (request.url === '/about') {
+        // if(err){throw err}
+        response.writeHead(200, {
+            'content-type': 'text/html'
+        });
+        const readStream2 = fs.createReadStream(__dirname + '/about.html')
+        readStream2.pipe(res);
+    }else{
+        response.writeHead(200, {
+            'content-type': 'text/html'
+        });
+        const readStream2 = fs.createReadStream(__dirname + '/404.html')
+        readStream2.pipe(res);
     }
     //writes a header, takes in a status code
     //header
