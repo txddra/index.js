@@ -34,10 +34,11 @@ const server = http.createServer((request, response) => {
 
         readStream.pipe(response)
     }else if(request.url === '/about'){
-if(err){throw err}
+// if(err){throw err}
 response.writeHead(200,{
     'content-type':'text/html'
 });
+const readStream2 = fs.createReadStream(__dirname + '/about.html')
 readStream2.pipe(res);
     }
     //writes a header, takes in a status code
@@ -49,7 +50,7 @@ readStream2.pipe(res);
 
 
 
-})
+});
 
 
 //control+c is how you stop the server
